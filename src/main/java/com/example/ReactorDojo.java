@@ -1,5 +1,9 @@
 package com.example;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import reactor.core.publisher.Flux;
 
 public class ReactorDojo {
@@ -17,6 +21,10 @@ public class ReactorDojo {
     }
 
     public Flux<String> commaSplit(Flux<String> input) {
-        return input.flatMap(a -> Flux.fromArray(a.split(",")));
+        return input
+                .flatMap(a -> Flux.fromArray(a.split("")))
+                .windowWhile(a -> a.equals(",") == false)
+                .flatMap(a -> a.collect(Collectors.joining()))
+                .filter(a -> a.isEmpty() == false);
     }
 }
