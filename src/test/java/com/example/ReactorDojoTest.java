@@ -42,35 +42,35 @@ public class ReactorDojoTest {
 
     @Test
     public void commaSplit() throws Exception {
-        Flux<String> input = Flux.just("aaa,bb,", "ccc,ddddd,eee,", "fff,g,", "hhh,", "ii,jjj,");
+        Flux<String> input = Flux.just("aaa,bbb,", "ccc,ddddd,eee,", "ffff,g,", "hh,", "iiiii,jjj,");
         Flux<String> output = reactorDojo.commaSplit(input);
 
         StepVerifier
                 .create(output)
-                .expectNext("aaa", "bb", "ccc", "ddddd", "eee", "fff", "g", "hhh", "ii", "jjj")
+                .expectNext("aaa", "bbb", "ccc", "ddddd", "eee", "ffff", "g", "hh", "iiiii", "jjj")
                 .verifyComplete();
     }
 
 //    @Test
 //    public void commaSplitAdvanced() throws Exception {
-//        Flux<String> input = Flux.just("aaa,bb,", "ccc,ddddd,eee,", "fff,g,", "hhh,", "ii,jjj,");
+//        Flux<String> input = Flux.just("aaa,bb", "b,ccc,ddddd,e", "ee,ff", "ff,g,hh,i", "i", "iii,jjj,");
 //        Flux<String> output = reactorDojo.commaSplit(input);
 //
 //        StepVerifier
 //                .create(output)
-//                .expectNext("aaa", "bb", "ccc", "ddddd", "eee", "fff", "g", "hhh", "ii", "jjj")
+//                .expectNext("aaa", "bbb", "ccc", "ddddd", "eee", "ffff", "g", "hh", "iiiii", "jjj")
 //                .verifyComplete();
 //    }
 
 //    @Test
 //    public void commaSplitAdvancedInfinite() throws Exception {
-//        Flux<String> input = Flux.just("aaa,bb,", "ccc,ddddd,eee,", "fff,g,", "hhh,", "ii,jjj,").repeat();
+//        Flux<String> input = Flux.just("aaa,bb", "b,ccc,ddddd,e", "ee,ff", "ff,g,hh,i", "i", "iii,jjj,").repeat();
 //        Flux<String> output = reactorDojo.commaSplit(input);
 //
 //        StepVerifier
 //                .create(output)
-//                .expectNext("aaa", "bb", "ccc", "ddddd", "eee", "fff", "g", "hhh", "ii", "jjj")
-//                .expectNext("aaa", "bb", "ccc", "ddddd", "eee", "fff", "g", "hhh", "ii", "jjj")
-//                .expectNext("aaa", "bb", "ccc", "ddddd", "eee", "fff", "g", "hhh", "ii", "jjj");
+//                .expectNext("aaa", "bbb", "ccc", "ddddd", "eee", "ffff", "g", "hh", "iiiii", "jjj")
+//                .expectNext("aaa", "bbb", "ccc", "ddddd", "eee", "ffff", "g", "hh", "iiiii", "jjj")
+//                .expectNext("aaa", "bbb", "ccc", "ddddd", "eee", "ffff", "g", "hh", "iiiii", "jjj");
     }
 }
