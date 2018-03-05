@@ -21,9 +21,7 @@ public class ReactorDojo {
     }
 
     public Flux<String> commaSplit(Flux<String> input) {
-        return input
-        		.windowWhile(s -> !s.equals(","))
-        		.flatMap(s -> s.collect(Collectors.joining()))
-        		.flatMap(s -> Flux.fromArray(s.split(",")));
+        return input.bufferUntil(s -> s.endsWith(","))
+        	.flatMap(s -> Flux.fromArray(s.stream().collect(Collectors.joining()).split(",")));
     }
 }
