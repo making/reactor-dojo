@@ -64,7 +64,7 @@ public class ReactorDojoTest {
 
     @Test
     public void commaSplitAdvancedInfinite() throws Exception {
-        Flux<String> input = Flux.just("aaa,bb", "b,ccc,ddddd,e", "ee,ff", "ff,g,hh,i", "i", "iii,jjj,").repeat(3);
+        Flux<String> input = Flux.just("aaa,bb", "b,ccc,ddddd,e", "ee,ff", "ff,g,hh,i", "i", "iii,jjj,").repeat();
         Flux<String> output = reactorDojo.commaSplit(input);
 
         StepVerifier
